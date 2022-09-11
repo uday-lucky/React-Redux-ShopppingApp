@@ -15,6 +15,10 @@ const Home = () => {
   }, []);
   const getData = async () => {
     await axios.get("https://fakestoreapi.com/products").then((res) => {
+      res.data?.forEach((element) => {
+        element.itemCount = 0;
+        element.cartPrice = 0;
+      })
       setProducts(res.data);
      // dispatch({type:"ADD",payload:res.data});
     });

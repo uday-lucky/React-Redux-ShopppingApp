@@ -8,3 +8,9 @@ export const removeProduct = (props) => {
    payload: props,
  };
 }
+export const deleteProduct = (props) => {
+  return{
+     type: "DELETE",
+     payload: props,
+  };
+ }

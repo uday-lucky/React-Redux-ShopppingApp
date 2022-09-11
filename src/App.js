@@ -9,7 +9,17 @@ import Cart from "./Components/cart";
 import { store } from "./Redux/Store/store";
 function App() {
 
- 
+  const saveState = (state) => {
+    try {
+      const serializedState = JSON.stringify(state);
+      localStorage.setItem('state', serializedState);
+    } catch (e) {
+      // Ignore write errors;
+    }
+  };
+  store.subscribe(() => {
+    saveState(store.getState());
+  });
   return (
     <Router>
       <TopNavbar />
